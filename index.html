@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merryl's Portfolio | Fedora Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MI</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Tech</a></li>
+            <li><a href="#cats">Cats</a></li>
+        </ul>
+    </nav>
+
+    <header class="compact-hero">
+        <img src="profile1.jpg" alt="Merryl" class="profile-pic">
+        <h1>Hi, I'm <span class="highlight">Merryl Ignacio</span></h1>
+        
+        <div id="terminal-window">
+            <div class="terminal-bar">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <span class="terminal-title">konsole — bash</span>
+            </div>
+            <div class="terminal-body">
+                <span class="prompt">[gabrielle@fedora ~]$</span> <span id="typewriter"></span><span class="cursor">|</span>
+            </div>
+        </div>
+
+        <p class="hero-subtitle">Fedora KDE | Gamer | Runner | 3D Artist | BSIT 3rd Year</p>
+    </header>
+
+    <main class="container">
+        <section id="about" class="compact-section">
+            <h2>About</h2>
+            <p>I'm a Linux explorer and IT enthusiast currently building a hospital appointment system with <strong>Django</strong>. When I'm not coding, I'm sculpting digital worlds through <strong>3D rendering</strong> or hitting the pavement for a 5km run.</p>
+        </section>
+
+        <section id="skills" class="compact-section">
+            <h2>Skills & Hobbies</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Tech Stack</h3>
+                    <div class="tags">
+                        <span>Python/Django</span>
+                        <span>Fedora KDE</span>
+                        <span>Git</span>
+                        <span>Hardware</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Creative & Fun</h3>
+                    <div class="tags">
+                        <span>3D Rendering</span>
+                        <span>Minecraft</span>
+                        <span>Stardew Valley</span>
+                        <span>Long-distance Running</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cats" class="compact-section">
+            <h2>The Team 🐈</h2>
+            <p class="section-desc">Meet the feline roommates keeping the server running.</p>
+            <div class="cat-grid">
+                <div class="cat-item">
+                    <img src="cat1.jpg" alt="Cleo">
+                    <div class="cat-info">
+                        <strong>Cleo</strong>
+                        <span>Lead Security</span>
+                    </div>
+                </div>
+                <div class="cat-item">
+                    <img src="cat2.jpg" alt="Sydney">
+                    <div class="cat-info">
+                        <strong>Sydney</strong>
+                        <span>Junior Dev</span>
+                    </div>
+                </div>
+                <div class="cat-item">
+                    <img src="cat3.jpg" alt="Sofia">
+                    <div class="cat-info">
+                        <strong>Sofia</strong>
+                        <span>QA Tester</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Merryl Ignacio | Built on Fedora</p>
+    </footer>
+
+    <button id="theme-toggle" title="Switch KDE Theme">🎨</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
