@@ -26,7 +26,7 @@ if (localStorage.getItem("theme") === "light") {
 }
 
 // 1. Terminal Effect
-const terminalText = "neofetch --mode 3d_artist --status active";
+const terminalText = "neofetch --mode IT Student --status active";
 const target = document.getElementById("typewriter");
 let index = 0;
 function type() { if (index < terminalText.length) { target.innerHTML += terminalText.charAt(index); index++; setTimeout(type, 60); } }
