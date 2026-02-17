@@ -1,37 +1,9 @@
-// Typewriter Effect for Fedora Terminal
+// --- 1. CONFIGURATION & DECLARATIONS ---
+// We only declare these ONCE at the top
 const terminalText = "neofetch --mode IT Student --status active";
 const target = document.getElementById("typewriter");
-let index = 0;
+let terminalIndex = 0; // Renamed to avoid confusion
 
-function type() {
-    if (index < terminalText.length) {
-        target.innerHTML += terminalText.charAt(index);
-        index++;
-        setTimeout(type, 70);
-    }
-}
-
-window.onload = type;
-
-const themeBtn = document.getElementById("theme-toggle");
-themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-    
-    const isLight = document.body.classList.contains("light-theme");
-    localStorage.setItem("theme", isLight ? "light" : "dark");
-});
-
-if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light-theme");
-}
-
-// 1. Terminal Effect
-const terminalText = "neofetch --mode IT Student --status active";
-const target = document.getElementById("typewriter");
-let index = 0;
-function type() { if (index < terminalText.length) { target.innerHTML += terminalText.charAt(index); index++; setTimeout(type, 60); } }
-
-// 2. Facebook-style Gallery Logic
 const cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'];
 let currentCatIndex = 0;
 let touchStartX = 0;
@@ -40,8 +12,18 @@ let touchEndX = 0;
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const galleryImgs = document.querySelectorAll('.gallery-img');
+const themeBtn = document.getElementById("theme-toggle");
 
-// Open gallery
+// --- 2. TERMINAL TYPEWRITER LOGIC ---
+function type() {
+    if (terminalIndex < terminalText.length) {
+        target.innerHTML += terminalText.charAt(terminalIndex);
+        terminalIndex++;
+        setTimeout(type, 60);
+    }
+}
+
+// --- 3. GALLERY & SWIPE LOGIC ---
 galleryImgs.forEach((img, idx) => {
     img.onclick = () => {
         currentCatIndex = idx;
@@ -64,11 +46,11 @@ function prevImage() {
     showImage();
 }
 
-// Click events for desktop arrows
+// Desktop Clicks
 document.getElementById('next-cat').onclick = (e) => { e.stopPropagation(); nextImage(); };
 document.getElementById('prev-cat').onclick = (e) => { e.stopPropagation(); prevImage(); };
 
-// Swipe logic for mobile
+// Mobile Swipes
 lightbox.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
 });
@@ -79,22 +61,28 @@ lightbox.addEventListener('touchend', e => {
 });
 
 function handleSwipe() {
-    if (touchEndX < touchStartX - 50) nextImage(); // Swiped left
-    if (touchEndX > touchStartX + 50) prevImage(); // Swiped right
+    if (touchEndX < touchStartX - 50) nextImage(); 
+    if (touchEndX > touchStartX + 50) prevImage(); 
 }
 
-// Close logic
+// Close Gallery
 document.querySelector('.close-lightbox').onclick = () => { lightbox.style.display = 'none'; };
-lightboxImg.onclick = (e) => e.stopPropagation(); // Prevents closing when clicking the image itself
+lightbox.onclick = () => { lightbox.style.display = 'none'; };
+lightboxImg.onclick = (e) => e.stopPropagation(); 
 
-// 3. Theme Toggle
-const themeBtn = document.getElementById("theme-toggle");
+// --- 4. THEME TOGGLE LOGIC ---
 themeBtn.onclick = () => {
     document.body.classList.toggle("light-theme");
     localStorage.setItem("theme", document.body.classList.contains("light-theme") ? "light" : "dark");
 };
 
+// --- 5. INITIALIZATION ---
+// This runs EVERYTHING when the window loads
 window.onload = () => {
-    type();
-    if (localStorage.getItem("theme") === "light") document.body.classList.add("light-theme");
+    type(); // Starts the typewriter
+    
+    // Check for saved theme
+    if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-theme");
+    }
 };
